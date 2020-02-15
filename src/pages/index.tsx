@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { withRedux } from '../lib/redux';
 import useInterval from '../lib/useInterval';
 import { NextPage, NextPageContext } from 'next';
+import { commonActions } from '@/redux/common/actions';
 
 import { Test } from '@/components/Test';
 
@@ -10,14 +11,17 @@ type Props = {
   userAgent?: string;
 };
 
-const Index: NextPage<Props> = ({ userAgent }): JSX.Element => {
+const Index: NextPage<Props> = (props): JSX.Element => {
+  console.log(props);
+  const { userAgent } = props;
   const dispatch = useDispatch();
   useInterval(() => {
-    dispatch({
-      type: 'TICK',
-      light: true,
-      lastUpdate: Date.now()
-    });
+    dispatch(
+      commonActions.tick({
+        light: true,
+        lastUpdate: Date.now()
+      })
+    );
   }, 1000);
   return (
     <div>
@@ -33,11 +37,12 @@ Index.getInitialProps = async (
 ): Promise<Props> => {
   const { req, reduxStore } = ctx;
   const { dispatch } = reduxStore;
-  dispatch({
-    type: 'TICK',
-    light: typeof window === 'object',
-    lastUpdate: Date.now()
-  });
+  dispatch(
+    commonActions.tick({
+      light: typeof window === 'object',
+      lastUpdate: Date.now()
+    })
+  );
   const userAgent = req ? req.headers['user-agent'] : navigator.userAgent;
   return { userAgent };
 };
