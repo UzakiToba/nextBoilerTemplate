@@ -13,17 +13,12 @@
     }
   },
   "plugins": [
-    "import",
     "@typescript-eslint",
     "prettier",
     "react",
     "react-hooks"
   ],
   "settings": {
-    "import/parsers": {
-      "@typescript-eslint/parser": [".ts", ".tsx"]
-    },
-    "import/resolver": "webpack",
     "react": {
       "version": "detect"
     }
