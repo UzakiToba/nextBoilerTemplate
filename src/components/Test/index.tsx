@@ -1,13 +1,13 @@
 import React from 'react';
 import { NextPage } from 'next';
 import { useSelector, shallowEqual } from 'react-redux';
-import { rootReducerStore } from '@/redux/store';
+import { Store } from '@/redux';
 
 type Props = {};
 
 export const Test: NextPage<Props> = (): JSX.Element => {
   const store = useSelector(
-    (state: rootReducerStore) => ({
+    (state: Store) => ({
       lastUpdate: state.common.lastUpdate,
       light: state.common.light
     }),

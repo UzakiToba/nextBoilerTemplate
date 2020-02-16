@@ -1,18 +1,18 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { withRedux } from '../lib/redux';
-import useInterval from '../lib/useInterval';
+import { withRedux } from '@/lib/redux';
+import useInterval from '@/lib/useInterval';
 import { NextPage, NextPageContext } from 'next';
-import { commonActions } from '@/redux/common/actions';
+import { commonActions } from '@/redux';
 
 import { Test } from '@/components/Test';
+import { UpdateCount } from '@/components/UpdateCount';
 
 type Props = {
   userAgent?: string;
 };
 
 const Index: NextPage<Props> = (props): JSX.Element => {
-  console.log(props);
   const { userAgent } = props;
   const dispatch = useDispatch();
   useInterval(() => {
@@ -26,6 +26,7 @@ const Index: NextPage<Props> = (props): JSX.Element => {
   return (
     <div>
       <Test />
+      <UpdateCount />
       <p>agent: {userAgent || 'none'}</p>
       <p>{process.env._HOGE}</p>
     </div>

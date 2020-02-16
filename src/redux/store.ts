@@ -1,4 +1,9 @@
-import { createStore, applyMiddleware, combineReducers, Store } from 'redux';
+import {
+  createStore,
+  applyMiddleware,
+  combineReducers,
+  Store as ReduxStore
+} from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 import { commonReducer } from '@/redux/common';
@@ -9,11 +14,11 @@ const rootReducer = combineReducers({
   common: commonReducer
 });
 
-export type rootReducerStore = ReturnType<typeof rootReducer>;
+export type Store = ReturnType<typeof rootReducer>;
 
 const initializeStore = (
   preloadedState = initialState
-): Store<InitialState, any> => {
+): ReduxStore<InitialState, any> => {
   return createStore(
     rootReducer,
     preloadedState,

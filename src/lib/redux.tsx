@@ -18,7 +18,6 @@ export const withRedux = (PageComponent: any, { ssr = true } = {}): any => {
       </Provider>
     );
   };
-  console.log({ WithRedux });
   // _appで使用してはいけない
   if (process.env.NODE_ENV !== 'production') {
     const isAppHoc =
@@ -35,7 +34,6 @@ export const withRedux = (PageComponent: any, { ssr = true } = {}): any => {
 
     WithRedux.displayName = `withRedux(${displayName})`;
   }
-  console.log({ WithRedux });
   if (ssr || PageComponent.getInitialProps) {
     WithRedux.getInitialProps = async (
       context: AppContext & { reduxStore: InitializeStore }
@@ -59,7 +57,6 @@ export const withRedux = (PageComponent: any, { ssr = true } = {}): any => {
       };
     };
   }
-  console.log({ WithRedux });
   return WithRedux;
 };
 

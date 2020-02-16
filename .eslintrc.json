@@ -62,6 +62,13 @@
     "react/prop-types": "off",
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
+    "react/self-closing-comp": [
+      "error",
+      {
+        "component": true,
+        "html": true
+      }
+    ],
     "@typescript-eslint/prefer-interface": "off",
     "@typescript-eslint/interface-name-prefix": "off",
     "@typescript-eslint/no-empty-interface": "off",
