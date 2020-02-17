@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { withRedux } from '@/lib/redux';
 import useInterval from '@/lib/useInterval';
 import { NextPage, NextPageContext } from 'next';
+import Link from 'next/link';
 import { commonActions } from '@/redux';
 
 import { Test } from '@/components/Test';
@@ -29,10 +30,14 @@ const Index: NextPage<Props> = (props): JSX.Element => {
       <UpdateCount />
       <p>agent: {userAgent || 'none'}</p>
       <p>{process.env._HOGE}</p>
+      <Link href="/hoge">
+        <a>HogePage</a>
+      </Link>
     </div>
   );
 };
 
+// withReduxのHOCを使用した場合reduxStoreが渡ってくる
 Index.getInitialProps = async (
   ctx: NextPageContext & { reduxStore: any }
 ): Promise<Props> => {
