@@ -3,6 +3,8 @@ import { NextPage } from 'next';
 import { useSelector, shallowEqual } from 'react-redux';
 import { Store } from '@/redux';
 
+import * as style from './styles';
+
 type Props = {};
 
 export const Test: NextPage<Props> = (): JSX.Element => {
@@ -14,8 +16,8 @@ export const Test: NextPage<Props> = (): JSX.Element => {
     shallowEqual
   );
   return (
-    <div>
+    <style.H1>
       <p>{store.lastUpdate}</p>
-    </div>
+    </style.H1>
   );
 };
