@@ -24,8 +24,11 @@
       "@/*": ["src/*"]
     },
   },
+  "typeRoots": [
+    "@types"
+  ],
   "include": [
-    "next-env.d.ts",
+    "@types/next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
   ],
